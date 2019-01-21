@@ -29,21 +29,21 @@ from [the Kafka Quick Start]:
 
 ```
 # A non-default bridge network enables convenient name-to-hostname discovery
-$ docker network create kafka-net
+$ docker network create kafkanet
 
-$ docker run -d --name zookeeper --network kafka-net zookeeper:3.4
-$ docker run -d --name kafka --network kafka-net --env ZOOKEEPER_IP=zookeeper ches/kafka
+$ docker run -d --name zookeeper --network kafkanet zookeeper:3.4.13
+$ docker run -d --name kafka --network kafkanet --env ZOOKEEPER_IP=zookeeper chwang733/kafka:2.1.0
 
-$ docker run --rm --network kafka-net ches/kafka \
+$ docker run --rm --network kafkanet chwang733/kafka:2.1.0 \
 >   kafka-topics.sh --create --topic test --replication-factor 1 --partitions 1 --zookeeper zookeeper:2181
 Created topic "test".
 
 # In separate terminals:
-$ docker run --rm --interactive --network kafka-net ches/kafka \
+$ docker run --rm --interactive --network kafkanet chwang733/kafka:2.1.0 \
 >   kafka-console-producer.sh --topic test --broker-list kafka:9092
 <type some messages followed by newline>
 
-$ docker run --rm --network kafka-net ches/kafka \
+$ docker run --rm --network kafkanet chwang733/kafka:2.1.0 \
 >   kafka-console-consumer.sh --topic test --from-beginning --bootstrap-server kafka:9092
 ```
 

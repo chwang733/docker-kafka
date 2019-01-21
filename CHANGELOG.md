@@ -1,9 +1,9 @@
 Release Notes
 =============
 
-## latest - running releases of `latest` tag
+## 2.1.0 - 21 January, 2019
 
-No changes yet.
+update to Kafka 2.1.0
 
 ## 0.10.2.1 - 12 June, 2017
 
